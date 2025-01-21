@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 
 public class Main {
+    private static final int countCars = 3;
+    private static final int minSpeed = 1;
+    private static final int maxSpeed = 250;
 
     public static void main(String[] args) {
-        int count_cars = 3;
-        int min_speed = 1;
-        int max_speed = 250;
         Race race = new Race();
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < count_cars; i++) {
+        for (int i = 0; i < countCars; i++) {
             int count = i + 1;
             System.out.println("Введите название машины №" + count);
             String name = scanner.next();
@@ -18,7 +18,7 @@ public class Main {
                 System.out.println("Введите скорость машины №" + count);
                 if (scanner.hasNextInt()) {
                     int speed = scanner.nextInt();
-                    if (speed < min_speed | speed > max_speed) {
+                    if (speed < minSpeed | speed > maxSpeed) {
                         System.out.println("Неправильная скорость");
                     } else {
                         race.checkLeader(new Car(name, speed));
@@ -31,6 +31,6 @@ public class Main {
             }
         }
         scanner.close();
-    System.out.println("Самая быстрая машина: " + race.car_name);
+    System.out.println("Самая быстрая машина: " + race.getLeader());
     }
 }
